@@ -114,5 +114,5 @@ instance (MonadThrow m, Delete1 a) => Delete (a -> TwilioT m ()) where
 parseJSONFromResponse :: (FromJSON a, MonadThrow m) => Response LBS.ByteString -> m a
 parseJSONFromResponse response =
   case eitherDecode (responseBody response) >>= parseEither parseJSON of
-    Left  _ -> throwM $ UnexpectedResponse response
+    Left  e -> throwM $ UnexpectedResponse e response
     Right a -> return a

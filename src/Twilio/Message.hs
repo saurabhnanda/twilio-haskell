@@ -47,8 +47,8 @@ data Message = Message
   , status      :: !MessageStatus
 --  , numSegments :: !Integer
   , direction   :: !MessageDirection
---  , price       :: !Double
-  , priceUnit   :: !PriceUnit
+  -- , price       :: !(Maybe Double)
+  -- , priceUnit   :: !(Maybe PriceUnit)
   , apiVersion  :: !APIVersion
   , uri         :: !URI
   } deriving (Show, Eq)
@@ -69,7 +69,7 @@ instance FromJSON Message where
     <*>  v .: "direction"
 --    <*> (v .: "price"        <&> fmap safeRead
 --                             >>= maybeReturn')
-    <*>  v .: "price_unit"
+    -- <*>  v .: "price_unit"
     <*>  v .: "api_version"
     <*> (v .: "uri"          <&> parseRelativeReference
                              >>= maybeReturn)

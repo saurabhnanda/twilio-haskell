@@ -168,7 +168,7 @@ data TwilioException
   = InvalidSID         !Text
   | InvalidAuthToken   !Text
   | InvalidCredentials
-  | UnexpectedResponse !(Response LBS.ByteString)
+  | UnexpectedResponse !String !(Response LBS.ByteString)
   deriving (Show, Eq, Typeable)
 
 instance Exception TwilioException
