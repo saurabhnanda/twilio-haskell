@@ -12,7 +12,7 @@ build-type:          Simple
 cabal-version:       >=1.8
 -- NOTE(mroberts): See https://github.com/markandrus/twilio-haskell/issues/44
 -- tested-with:         GHC == 7.8.4, GHC == 7.10.1, GHC == 7.10.2, GHC == 8.0.1
-tested-with:         GHC == 7.10.1, GHC == 7.10.2, GHC == 8.0.1, GHC == 8.0.2
+-- tested-with:         GHC == 7.10.1, GHC == 7.10.2, GHC == 8.0.1, GHC == 8.0.2
 
 source-repository head
   type: git
@@ -84,28 +84,28 @@ library
                        Twilio.UsageTrigger,
                        Twilio.UsageTriggers
   hs-source-dirs:      src
-  build-depends:       aeson >=0.8 && <0.10 || >=0.11,
-                       base ==4.*,
-                       binary >=0.7,
-                       bytestring ==0.10.*,
+  build-depends:       aeson,
+                       base >=4.7 && <5,
+                       binary,
+                       bytestring,
                        containers,
-                       deepseq >=1,
-                       errors >=1,
-                       exceptions ==0.*,
-                       free ==4.* || ==5.*,
-                       hashable >=1,
-                       http-client >=0.4,
-                       http-client-tls >=0.2,
-                       http-types ==0.*,
-                       mtl ==2.*,
-                       network-uri >=2.6,
-                       old-locale ==1.0.*,
-                       scientific ==0.*,
-                       template-haskell >=2,
-                       text ==1.*,
-                       time >=1,
-                       transformers >=0.3,
-                       unordered-containers ==0.2.*
+                       deepseq,
+                       errors,
+                       exceptions,
+                       free,
+                       hashable,
+                       http-client,
+                       http-client-tls,
+                       http-types,
+                       mtl,
+                       network-uri,
+                       old-locale,
+                       scientific,
+                       template-haskell,
+                       text ,
+                       time,
+                       transformers,
+                       unordered-containers
 
 test-suite apitests
   hs-source-dirs:      test/api
@@ -128,8 +128,8 @@ test-suite integrationtests
   Type:                exitcode-stdio-1.0
   other-modules:       Twilio.Types.PriceUnitSpec
   build-depends:       base
-                     , hspec == 2.*
-                     , QuickCheck == 2.*
+                     , hspec
+                     , QuickCheck
                      , text
                      , aeson
                      , twilio

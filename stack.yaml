@@ -39,7 +39,11 @@ packages:
 - '.'
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
-extra-deps: []
+extra-deps:
+ - containers-0.6.8
+ - binary-0.8.9.2@sha256:03381e511429c44d13990c6d76281c4fc2468371cede4fe684b0c98d9b7d5f5a,6611
+ - parsec-3.1.17.0@sha256:8407cbd428d7f640a0fff8891bd2f7aca13cebe70a5e654856f8abec9a648b56,5149
+ - text-1.2.5.0@sha256:92ea31d8b356b7fd62ac862b871dc1e134bd5db462d798313babf6aa6f69aca8,8180
 
 # Override default flag values for local packages and extra-deps
 flags: {}
@@ -64,4 +68,4 @@ extra-package-dbs: []
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
-allow-newer: true
+# allow-newer: true
