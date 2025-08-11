@@ -24,6 +24,7 @@ import Data.Aeson
 import Data.Aeson.Types
 import Data.Data
 import Data.Text (Text)
+import Data.Aeson.Key as Key
 import Debug.Trace (trace)
 import GHC.Generics
 import Network.URI
@@ -50,7 +51,7 @@ class FromJSON b => List a b | a -> b where
   parseJSONToList o@(Object v)
       =  unwrap (getListWrapper :: Wrapper (Maybe PagingInformation -> [b] -> a))
      <$> maybePagingInformation
-     <*> (v .: getConst (getPlural :: Const Text (a, b)) :: Parser [b])
+     <*> (v .: Key.fromText (getConst (getPlural :: Const Text (a, b))) :: Parser [b])
     where
       maybePagingInformation = case fromJSON o of
         Success pagingInformation -> return $ Just pagingInformation

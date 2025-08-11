@@ -11,8 +11,10 @@
 module Twilio.Types.Capability where
 
 import Control.Monad
+import Data.Maybe (fromMaybe)
 import Data.Aeson
-import qualified Data.HashMap.Strict as HashMap
+import qualified Data.Aeson.KeyMap as KeyMap
+import qualified Data.Aeson.Key as Key
 import Data.Set (Set)
 import qualified Data.Set as Set
 import qualified Data.Text as T
@@ -31,7 +33,7 @@ instance {-# OVERLAPPING #-} FromJSON Capabilities where
                         Bool bool     -> bool
                         _             -> False) map
       in  return $ foldr (\capability set ->
-            if HashMap.lookupDefault False (T.pack $ show capability) map'
+            if fromMaybe False (KeyMap.lookup (Key.fromText $ T.pack $ show capability) map')
               then Set.insert capability set
               else set
           ) Set.empty [Voice, SMS, MMS]
